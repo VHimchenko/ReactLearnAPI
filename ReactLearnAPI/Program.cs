@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using ReactLearnAPI.Configs;
 using ReactLearnAPI.DB;
+using ReactLearnAPI.DB.Reps;
+using ReactLearnAPI.DB.Reps.Interfaces;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +30,8 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -40,7 +44,10 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.MapScalarApiReference();
+app.MapScalarApiReference(o =>
+{
+    o.WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
+});
 
 app.UseHttpsRedirection();
 
