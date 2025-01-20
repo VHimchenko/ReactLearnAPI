@@ -1,0 +1,6 @@
+@ReactLearnAPI_HostAddress = http://localhost:5239
+
+GET {{ReactLearnAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
