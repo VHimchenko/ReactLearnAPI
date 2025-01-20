@@ -25,8 +25,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy(cors.PolicyName, config =>
     {
         config.WithOrigins(cors.Options.Addresses)
-            .WithMethods(cors.Options.Methods)
-            .WithHeaders(cors.Options.Headers);
+            .WithMethods(string.Join(',', cors.Options.Methods))
+            .WithHeaders(string.Join(',', cors.Options.Headers));
     });
 });
 
