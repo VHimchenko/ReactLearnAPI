@@ -40,3 +40,14 @@
 .read-the-docs {
   color: #888;
 }
+
+ul.horizontal-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.horizontal-list li{
+  margin-right: 1em;
+}
