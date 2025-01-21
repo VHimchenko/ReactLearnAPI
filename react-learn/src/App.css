@@ -41,7 +41,7 @@
   color: #888;
 }
 
-ul.horizontal-list {
+.horizontal-list {
   display: flex;
   list-style: none;
   padding: 0;
