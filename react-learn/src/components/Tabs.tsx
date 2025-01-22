@@ -8,7 +8,6 @@ export interface ITabs extends PropsWithChildren {
 
 export default function Tabs({...props}: ITabs & {}) {
     const ButtonsContainer = props.buttonsContainer;
-
     return (
         <>
             <ButtonsContainer className="horizontal-list">
