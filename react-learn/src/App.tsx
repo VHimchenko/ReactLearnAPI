@@ -10,8 +10,6 @@ import TabContent from "./components/TabContent.tsx";
 function App() {
     const [ selectedTopic, setSelectedTopic ] = useState({title: '', description: '', code: ``});
 
-    //let tabContent = 'Click on a tab to see the code!';
-
     function handleSelect(selectedButton: string) {
         const selectedContent = EXAMPLES.find(example => example.title === selectedButton);
         setSelectedTopic(selectedContent!);
