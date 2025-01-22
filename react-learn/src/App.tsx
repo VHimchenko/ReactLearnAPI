@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import Header from "./components/Header.tsx";
+import CoreConcept from "./components/CoreConcept.tsx";
+import {CORE_CONCEPTS, EXAMPLES} from "./services/data.tsx";
+import TabButton from "./components/TabButton.tsx";
+import TabContent from "./components/TabContent.tsx";
+
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [ selectedTopic, setSelectedTopic ] = useState({title: '', description: '', code: ``});
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    function handleSelect(selectedButton: string) {
+        const selectedContent = EXAMPLES.find(example => example.title === selectedButton);
+        setSelectedTopic(selectedContent!);
+        console.log(selectedButton);
+    }
+
+    return (
+        <>
+            <Header></Header>
+            <section id="core-concepts">
+                <h2>Time to get started!</h2>
+                <ul className="horizontal-list">
+                    { CORE_CONCEPTS.map(concept =>
+                        (<CoreConcept key={ concept.title } {...concept}/>)) }
+                </ul>
+            </section>
+            <section id="examples">
+                <menu className="horizontal-list">
+                    { CORE_CONCEPTS.map(concept =>
+                        (<TabButton key={concept.title}
+                                    isSelected={ selectedTopic.title === concept.title }
+                                    onSelect={() => handleSelect(concept.title)}>{concept.title}
+                        </TabButton>))
+                    }
+                </menu>
+                <div className="tab-content">
+                    <TabContent {...selectedTopic} />
+                </div>
+            </section>
+        </>
+    )
 }
 
 export default App
