@@ -22,21 +22,18 @@ function App() {
             <section id="core-concepts">
                 <h2>Time to get started!</h2>
                 <ul className="horizontal-list">
-                    <CoreConcept
-                        title={CORE_CONCEPTS[0].title}
-                        description={CORE_CONCEPTS[0].description}
-                        image={CORE_CONCEPTS[0].image}/>
-                    <CoreConcept {...CORE_CONCEPTS[1]}/>
-                    <CoreConcept {...CORE_CONCEPTS[2]}/>
-                    <CoreConcept {...CORE_CONCEPTS[3]}/>
+                    { CORE_CONCEPTS.map(concept =>
+                        (<CoreConcept key={ concept.title } {...concept}/>)) }
                 </ul>
             </section>
             <section id="examples">
                 <menu className="horizontal-list">
-                    <TabButton onSelect={() => handleSelect('Components')}>{CORE_CONCEPTS[0].title}</TabButton>
-                    <TabButton onSelect={() => handleSelect('JSX')}>{CORE_CONCEPTS[1].title}</TabButton>
-                    <TabButton onSelect={() => handleSelect('Props')}>{CORE_CONCEPTS[2].title}</TabButton>
-                    <TabButton onSelect={() => handleSelect('State')}>{CORE_CONCEPTS[3].title}</TabButton>
+                    { CORE_CONCEPTS.map(concept =>
+                        (<TabButton key={concept.title}
+                                    isSelected={ selectedTopic.title === concept.title }
+                                    onSelect={() => handleSelect(concept.title)}>{concept.title}
+                        </TabButton>))
+                    }
                 </menu>
                 <div className="tab-content">
                     <TabContent {...selectedTopic} />
