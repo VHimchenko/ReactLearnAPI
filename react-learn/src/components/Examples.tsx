@@ -2,6 +2,7 @@ import {CORE_CONCEPTS, EXAMPLES} from "../services/data.tsx";
 import TabButton from "./TabButton.tsx";
 import TabContent from "./TabContent.tsx";
 import {useState} from "react";
+import Section from "./Section.tsx";
 
 export default function Examples() {
     const [ selectedTopic, setSelectedTopic ] = useState({title: '', description: '', code: ``});
@@ -13,7 +14,7 @@ export default function Examples() {
     }
 
     return (
-        <section id="examples">
+        <Section id="examples" title="Examples">
             <menu className="horizontal-list">
                 { CORE_CONCEPTS.map(concept =>
                     (<TabButton key={ `${concept.title}-examples` }
@@ -25,6 +26,6 @@ export default function Examples() {
             <div className="tab-content">
                 <TabContent {...selectedTopic} />
             </div>
-        </section>
+        </Section>
     );
 }
