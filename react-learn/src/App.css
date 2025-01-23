@@ -90,13 +90,23 @@
   display: flex; /* Flexbox for centering content */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-
-  background: #f9f9f9;
-  border: 1px solid #000;
+  background: none;
+  color: #c3ba78;
+  border: none;
   cursor: pointer;
   font-size: 2em;
   font-weight: bold;
   padding: 0.5em;
   border-radius: 6px;
   transition: background-color 0.25s;
+}
+
+#players.highlight-player li.active {
+  border-color: #f6325a;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+#players.highlight-player li.active .player-name,
+#players.highlight-player li.active .player-symbol {
+  color: #f6325a;
 }
