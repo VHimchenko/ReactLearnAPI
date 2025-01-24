@@ -3,6 +3,7 @@ import * as React from "react";
 
 export interface IPlayerProps extends PropsWithChildren{
     initialName: string;
+    isActive: boolean;
 }
 
 export default function Player(props: IPlayerProps) {
@@ -25,7 +26,7 @@ export default function Player(props: IPlayerProps) {
     }
 
     return (
-        <li>
+        <li className={props.isActive ? "active" : ""}>
             <span className="player">{props.children}
                 {playerNameControl}
                 <span className="player-symbol">{props.children}</span>
