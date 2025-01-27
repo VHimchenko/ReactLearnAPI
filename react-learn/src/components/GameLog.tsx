@@ -1,4 +1,3 @@
-//import {useState} from "react";
 import {IGameTurns} from "./Game.tsx";
 
 export interface IGameLogProps {
@@ -6,16 +5,13 @@ export interface IGameLogProps {
 }
 
 export default function GameLog(props: IGameLogProps) {
-
-    //const gameLogArray: string[] = [];
-
     return (
         <ol id="game-log">
-            props.logItems.map((logItem: IGameTurns) => {
-                return (
-                    <li>logItem.</li>
-                )
-            });
+            {props.logItems.map((logItem: IGameTurns) => {
+                const {square, player} = logItem;
+                return (<li>{`${player}: [${square.row},${square.col}]`}</li>)
+            })}
         </ol>
     );
 }
+

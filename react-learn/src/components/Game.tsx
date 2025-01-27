@@ -36,7 +36,10 @@ export default function Game() {
         <main>
             <div id="game-container">
                 <Players activePlayer={activePlayer}/>
-                <GameBoard activePlayerSymbol={activePlayer} onSelectSquare={handleSelectSquare}/>
+                <GameBoard
+                    onSelectSquare={handleSelectSquare}
+                    turns={gameTurns}
+                />
             </div>
             <GameLog logItems={gameTurns}/>
         </main>
