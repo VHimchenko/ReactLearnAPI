@@ -1,5 +1,5 @@
-import viteLogo from "../assets/vite.svg";
-import reactLogo from "../assets/react.svg";
+import viteLogo from "../../assets/vite.svg";
+import reactLogo from "../../assets/react.svg";
 
 const reactDescription = ['Fundamental', 'Crucial', 'Core'];
 function genRandomInt(max: number):number {

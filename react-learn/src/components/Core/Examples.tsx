@@ -1,4 +1,4 @@
-import {CORE_CONCEPTS, EXAMPLES} from "../services/data.tsx";
+import {CORE_CONCEPTS, EXAMPLES} from "../../services/data.tsx";
 import TabButton from "./TabButton.tsx";
 import TabContent from "./TabContent.tsx";
 import {useState} from "react";

@@ -1,8 +1,8 @@
 import './App.css';
-import Header from "./components/Header.tsx";
-import CoreConcepts from "./components/CoreConcepts.tsx";
-import Examples from "./components/Examples.tsx";
-import Game from "./components/Game.tsx";
+import Header from "./components/Core/Header.tsx";
+import CoreConcepts from "./components/Core/CoreConcepts.tsx";
+import Examples from "./components/Core/Examples.tsx";
+import Game from "./components/Game/Game.tsx";
 
 function App() {
     return (

@@ -1,4 +1,4 @@
-import {CORE_CONCEPTS} from "../services/data.tsx";
+import {CORE_CONCEPTS} from "../../services/data.tsx";
 import CoreConcept from "./CoreConcept.tsx";
 import Section from "./Section.tsx";
 
