@@ -111,3 +111,10 @@
 #players.highlight-player li.active .player-symbol {
   color: #f6325a;
 }
+
+.investment-calculator{
+  background: linear-gradient(#383624, #242424);
+  color: #c3ba78;
+  padding: 1rem;
+  border-radius: 6px;
+}
