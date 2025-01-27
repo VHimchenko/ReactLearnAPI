@@ -1,7 +1,8 @@
 import {useState} from "react";
 
 export interface IGameBoardProps {
-    onSelectSquare: () => void;
+    onSelectSquare: (row: number, col: number) => void;
+    activePlayerSymbol: string;
 }
 
 const initialGameBoard = [
@@ -11,7 +12,7 @@ const initialGameBoard = [
 ];
 
 export default function GameBoard(props: IGameBoardProps) {
-    /*const [gameBoard, setGameBoard] = useState<Array<Array<null | string>>>(initialGameBoard);
+    const [gameBoard, setGameBoard] = useState<Array<Array<null | string>>>(initialGameBoard);
 
     function handleSelectSquare(rowIndex: number, colIndex: number){
         setGameBoard((prevGameBoard) => {
@@ -20,8 +21,8 @@ export default function GameBoard(props: IGameBoardProps) {
             return newGameBoard;
         });
 
-        props.onSelectSquare();
-    }*/
+        props.onSelectSquare(rowIndex, colIndex);
+    }
 
     return (
         <ol id="game-board">
@@ -32,12 +33,9 @@ export default function GameBoard(props: IGameBoardProps) {
                             {row.map((cell, colIndex) => {
                                 return (
                                     <li key={colIndex}>
-                                        <button className="field-button"
-                                                onClick={(props.onSelectSquare) => {
-                                                    //handleSelectSquare(rowIndex,colIndex)
-                                                    return props.onSelectSquare(rowIndex, colIndex);
-                                                }
-                                        }>
+                                        <button className="field-button" onClick={() => {
+                                            handleSelectSquare(rowIndex, colIndex)
+                                        }}>
                                             {cell}
                                         </button>
                                     </li>
