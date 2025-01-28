@@ -2,7 +2,6 @@ import {IInvestmentsOutput, IInvestmentsOutputItem} from "./interfaces/interface
 import {InvestmentsCalculator} from "./utils/InvestmentsCalculator.ts";
 
 export default function OutputResults(props: IInvestmentsOutput) {
-
     const results = InvestmentsCalculator
         .calculateInvestmentResults(props.userInput);
 

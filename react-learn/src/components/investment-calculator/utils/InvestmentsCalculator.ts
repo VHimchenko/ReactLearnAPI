@@ -12,8 +12,8 @@ export class InvestmentsCalculator {
                 year: i + 1,
                 investmentValue: investmentValue,
                 interestPerYear: interestEarnedInYear,
-                totalInterest: investmentValue + interestEarnedInYear,
-                investedCapital: investmentValue - interestEarnedInYear
+                totalInterest: investmentValue,
+                investedCapital: inputParams.annualInvestment
             })
         }
         return annualData;

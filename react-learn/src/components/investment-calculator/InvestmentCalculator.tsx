@@ -22,7 +22,7 @@ export default function InvestmentCalculator() {
         setUserInput(prevUserInput => {
             return ({
                 ...prevUserInput,
-                [inputIdentifier]: newValue
+                [inputIdentifier]: +newValue
             })
         });
     }
