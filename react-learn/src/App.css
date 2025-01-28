@@ -111,3 +111,89 @@
 #players.highlight-player li.active .player-symbol {
   color: #f6325a;
 }
+
+.investment-calculator{
+  background: linear-gradient(#383624, #242424);
+  color: #c3ba78;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.green-desk {
+  background-color: #00a617;
+  border-radius: 10px;
+  width: 60%;
+  margin: 3rem auto;
+  padding: 1rem;
+}
+
+.green-desk-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Adjust spacing between columns */
+  margin-bottom: 1rem; /* Adjust spacing between rows */
+}
+
+.green-desk-col {
+  display: flex;
+  flex-direction: column; /* To stack label and input inside cells */
+  align-items: center; /* Centers the cell's content horizontally */
+  justify-content: center; /* Centers the cell's content vertically */
+  padding: 1rem; /* Adds padding inside each cell */
+  flex: 1; /* Makes columns equal in width */
+  position: relative; /* For label positioning */
+}
+
+.green-desk-col label {
+  position: absolute;
+  top: 10%; /* Positions the label at the top of the cell */
+  left: 5%; /* Adjust to position slightly from left */
+  color: #132B04;
+  margin-bottom: 0.5rem; /* Optional: space below if needed */
+  font-size: 0.9rem; /* Optional: adjust label size */
+}
+
+.green-desk-col input {
+  margin-top: 1rem; /* Provides space from the label above */
+  text-align: center; /* Centers text inside input */
+  background-color: #00a617;
+  color: #132B04;
+  padding: 0.5rem;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.output-results-table {
+  width: 60%; /* Makes the table width 60% of the container (screen width) */
+  margin: 2rem auto; /* Centers the table horizontally and adds spacing above/below */
+  border-collapse: collapse; /* Ensures borders are cleanly collapsed */
+  text-align: right; /* Ensures numbers align to the right by default */
+  font-family: Arial, sans-serif; /* General styling for readability */
+}
+
+.output-results-table th, .output-results-table td {
+  border: 1px solid #ddd; /* Adds a light border around each cell */
+  padding: 0.75rem; /* Adds padding for better readability */
+  vertical-align: middle; /* Aligns content vertically to the middle */
+  position: relative; /* Allows customization for $ positioning */
+}
+
+.output-results-table th {
+  background-color: transparent;
+  text-align: center; /* Centers header text */
+  font-weight: bold;
+}
+
+.output-results-table td {
+  text-align: right; /* Aligns numbers to the right */
+  font-size: 1rem; /* Font size for the data cells */
+}
+
+.output-results-table td::before {
+  content: "$"; /* Prepends a $ sign before the cell content */
+  position: absolute;
+  left: 0.5rem; /* Adjust the position of the $ relative to the cell */
+  font-weight: normal;
+  color: #444; /* Optional: Slightly lighter color for $ sign if needed */
+}
