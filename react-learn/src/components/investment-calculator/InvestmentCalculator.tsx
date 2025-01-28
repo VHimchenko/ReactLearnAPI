@@ -1,27 +1,34 @@
 import GreenDesk from './GreenDesk.tsx';
 import OutputResults from './OutputResults.tsx';
-import {IInvestmentCalculatorProps, IInvestmentsInput} from "./interfaces/interfaces.ts";
+import {IInvestmentsInputData} from "./interfaces/interfaces.ts";
 import {useState} from "react";
 
-const data: IInvestmentCalculatorProps = {
-    parameters: {
-        initial: 15000,
-        annualInvestment: 900,
-        expectedReturn: 5.5,
-        duration: 12
-    },
-    results: {
-        items: []
-    }
+const data: IInvestmentsInputData = {
+    initialInvestment: 15000,
+    annualInvestment: 1200,
+    expectedReturn: 6,
+    duration: 12
 };
 
 export default function InvestmentCalculator() {
-    const [investmentsData, setInvestmentData] = useState(data);
+    const [userInput, setUserInput] = useState({
+        initialInvestment: data.initialInvestment,
+        annualInvestment: data.annualInvestment,
+        expectedReturn: data.expectedReturn,
+        duration: data.duration,
+    });
 
-
+    function handleChange(inputIdentifier: string, newValue: number) {
+        setUserInput(prevUserInput => {
+            return ({
+                ...prevUserInput,
+                [inputIdentifier]: newValue
+            })
+        });
+    }
 
     return (<div className="investment-calculator">
-        <GreenDesk className="green-desk" {...investmentsData.parameters} />
-        <OutputResults {...investmentsData.results}/>
+        <GreenDesk className="green-desk" visibleData={userInput} onChangeInput={handleChange}/>
+        <OutputResults userInput={userInput}/>
     </div>)
 }

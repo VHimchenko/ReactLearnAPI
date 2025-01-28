@@ -1,6 +1,11 @@
 import {IInvestmentsOutput, IInvestmentsOutputItem} from "./interfaces/interfaces.ts";
+import {InvestmentsCalculator} from "./utils/InvestmentsCalculator.ts";
 
 export default function OutputResults(props: IInvestmentsOutput) {
+
+    const results = InvestmentsCalculator
+        .calculateInvestmentResults(props.userInput);
+
     return (
         <table className="output-results-table">
             <thead>
@@ -13,7 +18,7 @@ export default function OutputResults(props: IInvestmentsOutput) {
             </tr>
             </thead>
             <tbody>
-            {props.items.length > 0 && props.items.map((item: IInvestmentsOutputItem) => {
+            {results.length > 0 && results.map((item: IInvestmentsOutputItem) => {
                 return (
                     <tr key={item.year}>
                         <th scope="row">{item.year}</th>
