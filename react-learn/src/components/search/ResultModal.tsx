@@ -1,3 +1,4 @@
+/*
 import {forwardRef, LegacyRef, useImperativeHandle, useRef} from "react";
 
 export interface IResultModalProps{
@@ -35,4 +36,4 @@ const ResultModal = forwardRef(
     )
 })
 
-export default ResultModal;
+export default ResultModal;*/

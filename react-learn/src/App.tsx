@@ -5,6 +5,7 @@ import Examples from "./components/core/Examples.tsx";
 import Game from "./components/game/Game.tsx";
 import InvestmentCalculator from "./components/investment-calculator/InvestmentCalculator.tsx";
 import SetNameRoot from "./components/search/SetNameRoot.tsx";
+import ShopRoot from "./components/shop/ShopRoot.tsx";
 
 function App() {
     return (
@@ -18,6 +19,8 @@ function App() {
             <InvestmentCalculator/>
             <hr/>
             <SetNameRoot/>
+            <hr/>
+            <ShopRoot/>
         </>
     )
 }
