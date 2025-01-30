@@ -18,7 +18,8 @@ export default function TimerChallenge({title, targetTime}:{title: string, targe
         setTimerStarted(false);
     }
 
-    return (<section className="challenges">
+    return (
+        <section className="challenges">
             <h2>{title}</h2>
             {timerExpired && <p>Time's up!</p>}
             <p className="challendge-time">
