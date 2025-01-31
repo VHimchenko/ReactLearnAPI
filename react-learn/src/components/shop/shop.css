@@ -115,12 +115,14 @@
 
 /* Card Price */
 #shop .card-price {
+    text-align: left;
     font-size: 1.2rem;
     color: #ccad00; /* Yellow-gold color for price */
 }
 
 /* Card Description */
 #shop .card-desc {
+    text-align: left;
     font-size: 0.9rem;
     color: #444444;
     margin: 10px 0;
