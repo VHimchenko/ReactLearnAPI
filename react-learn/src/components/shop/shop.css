@@ -1,14 +1,17 @@
 /* Shop Container */
+div#shop  {
+    background: linear-gradient(to right, #603816, #8b4513); /* Adjust lightness for a slight change */
+    color: #fffddb; /* Light yellow for text */
+    padding: 1%;
+}
+
 #shop h1 {
     display: flex; /* Create a flex container */
     align-items: center; /* Vertically align items */
     justify-content: space-between; /* Distribute items: left and right */
     height: 60px; /* Optional: Set header height */
-    background: linear-gradient(to right, #603816, #8b4513); /* Adjust lightness for a slight change */
-    color: #fffddb; /* Light yellow for text */
     font-family: Arial, sans-serif;
     padding: 20px;
-
 }
 
 /* Header Image (Round) */
@@ -46,7 +49,6 @@
     background: linear-gradient(to bottom, #f7e491, #aa9500); /* Slightly darker on hover */
 }
 
-
 /* Major Button */
 #shop .button-major {
     background: linear-gradient(to bottom, #fffddb, #ccad00); /* Light yellow to darker yellow */
@@ -74,7 +76,7 @@
 }
 
 #shop .button-minor:hover {
-    background-color: #d97a2c;
+    background-color: #9C4800;
 }
 
 /* Cards Container */
@@ -86,11 +88,12 @@
 
 /* Each Card */
 #shop .card {
+    text-align: left;
+    background-color: #9c4800;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow effect */
     overflow: hidden;
-    background: #fff;
 }
 
 /* Card Image */
@@ -115,7 +118,6 @@
 
 /* Card Price */
 #shop .card-price {
-    text-align: left;
     font-size: 1.2rem;
     color: #ccad00; /* Yellow-gold color for price */
 }
@@ -124,7 +126,7 @@
 #shop .card-desc {
     text-align: left;
     font-size: 0.9rem;
-    color: #444444;
+    color: #C1AF55;
     margin: 10px 0;
 }
 

@@ -1,11 +1,15 @@
 import './shop.css'
-import ShopCard from "./ShopCard.tsx";
-import {IShopCard} from "./interfaces/interfaces.ts";
+import ShopCard from "./components/ShopCard.tsx";
+import {ICartItem, IShopCard} from "./interfaces/interfaces.ts";
+import Header from "./components/Header.tsx";
+import {useState} from "react";
+import {CartContext} from "./store/shopping-cart-context.tsx";
 
 export default function ShopRoot(){
-
+    const [cartItems, setCartItems] = useState<ICartItem[]>([]);
     const cartItemsCount = 0;
-    const cardItems: IShopCard[] = [
+
+    const productItems: IShopCard[] = [
         {title:"Test 1", image: "", info: "test info", price: 453.1, description: "test description"},
         {title:"Test 2", image: "", info: "test info", price: 453.1, description: "test description"},
         {title:"Test 3", image: "", info: "test info", price: 453.1, description: "test description"},
@@ -15,17 +19,30 @@ export default function ShopRoot(){
         {title:"Test 7", image: "", info: "test info", price: 453.1, description: "test description"}
     ];
 
+    function handleUpdateCartItemQuantity(){
+
+    }
+
+    function onAddItemToCart(item: IShopCard) {
+        const cartItem = cartItems.find(o => o.item.title === item.title);
+        if (cartItem) {
+            cartItem.count++
+            setCartItems([...cartItems]);
+        } else {
+            setCartItems([...cartItems, {item: item, count: 1}]);
+        }
+    }
+
     return(
+        <CartContext.Provider value={{ items: []}}>
         <div id="shop">
-            <h1> <img alt="Elegant content" src="https://i.pinimg.com/originals/18/2e/65/182e654e1ac146f0196f9adb5ad24742.jpg"/>
-                Elegant context
-                <button className="cart-button">Cart ({cartItemsCount})</button>
-            </h1>
+            <Header cartItemsCount={cartItemsCount} onUpdateCartItemQuantity={handleUpdateCartItemQuantity}/>
             <div className="cards-container">
-                {cardItems.map(item => {
-                    return <ShopCard key={item.title} cardItem={item}/>;
+                {productItems.map(item => {
+                    return <ShopCard key={item.title} cardItem={item} onAddToCart={onAddItemToCart}/>;
                 })}
             </div>
         </div>
+        </CartContext.Provider>
     )
 }
