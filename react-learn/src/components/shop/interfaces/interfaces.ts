@@ -1,4 +1,5 @@
 export interface IShopCard {
+    id: number;
     image: string;
     title: string;
     info: string;

@@ -1,9 +1,8 @@
 import {useContext} from "react";
 import {CartContext} from "../store/shopping-cart-context.tsx";
 
-export default function Cart({onUpdateCartItemQuantity}
-                             : {onUpdateCartItemQuantity: () => void}   ) {
-    const {items} = useContext(CartContext);
+export default function Cart() {
+    const {items, updateCartQuantity } = useContext(CartContext);
 
     const totalPrice = items.reduce(
         (acc, item) => acc + item.price * item.quantity, 0
@@ -17,15 +16,30 @@ export default function Cart({onUpdateCartItemQuantity}
             {items.length > 0 && (
                 <ul id="cart-items">
                     {items.map((item)=> {
-                        const formattedPrice = `$${item.price.toFixed(2)}`;
+                        const formattedPrice = `$${item.item.price.toFixed(2)}`;
                         return (
-                          <li key={item.id}>
-                              {item.title} x {item.quantity} = {formattedPrice}
+                          <li key={item.item.id}>
+                              <div>
+                                  <span>{item.item.title}</span>
+                                  <span>{formattedPrice}</span>
+                              </div>
+                              <div className="cart-item-actions">
+                                  <button onClick={() => { updateCartQuantity(item.item.id, -1) }}>
+                                      -
+                                  </button>
+                                  <button onClick={() => { updateCartQuantity(item.item.id, +1) }}>
+                                      +
+                                  </button>
+                              </div>
+                              {item.item.title} x {item.count} = {formattedPrice}
                           </li>
                         );
                     })}
                 </ul>
             )}
+            <p id="cart-total-price">
+                Cart Total: <strong>${formattedTotalPrice}</strong>
+            </p>
         </div>
     )
 }
