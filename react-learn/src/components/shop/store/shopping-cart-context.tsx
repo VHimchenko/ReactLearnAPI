@@ -1,4 +1,4 @@
-import {useReducer, useState} from "react";
+import {useReducer} from "react";
 import {ICartItem} from "../interfaces/interfaces.ts";
 import {DUMMY_PRODUCTS} from "../../../services/data.tsx";
 import {CartContext} from "./CartContext.tsx";
@@ -9,7 +9,7 @@ export interface IReducerAction<T> {
 }
 
 export interface IPayloadUpdateCartQuantity {
-    item: ICartItem;
+    productId: number;
     amount: number;
 }
 
@@ -47,7 +47,7 @@ function shoppingCartReducer<T>(state: IShoppingCartState, action: IReducerActio
         case 'UPDATE_ITEM_QUANTITY': {
             const updatedItems = [...state.items];
             const updatedItemIndex = updatedItems
-                .findIndex(i => i.item.id === (action.payload as IPayloadUpdateCartQuantity).item.item.id);
+                .findIndex(i => i.item.id === (action.payload as IPayloadUpdateCartQuantity).productId);
 
             const updatedItem = {
                 ...updatedItems[updatedItemIndex],
@@ -72,8 +72,6 @@ function shoppingCartReducer<T>(state: IShoppingCartState, action: IReducerActio
 }
 
 export default function CartContextProvider({children}: {children: any}) {
-    const [cartItems, setCartItems] = useState<ICartItem[]>([]);
-
     const [shoppingCartState, shoppingCartDispatch] = useReducer(
         shoppingCartReducer,
         {
@@ -86,21 +84,13 @@ export default function CartContextProvider({children}: {children: any}) {
             type: 'ADD_ITEM',
             payload: item
         });
-
-        const cartItem = cartItems.find(o => o.item.title === item.item.title);
-        if (cartItem) {
-            cartItem.count++
-            setCartItems([...cartItems]);
-        } else {
-            setCartItems([...cartItems, {item: item.item, count: 1}]);
-        }
     }
 
     function onUpdateCartQuantity(item: ICartItem, amount: number) {
         shoppingCartDispatch({
             type: 'UPDATE_ITEM_QUANTITY',
             payload: {
-                item: item,
+                productId: item.item.id,
                 amount: amount
             }
         });

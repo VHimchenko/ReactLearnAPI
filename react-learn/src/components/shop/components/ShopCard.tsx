@@ -1,6 +1,6 @@
 import {IShopCard} from "../interfaces/interfaces.ts";
 import {useContext} from "react";
-import {CartContext} from "../store/shopping-cart-context.tsx";
+import {CartContext} from "../store/CartContext.tsx";
 
 export default function ShopCard({cardItem}
                                  : {cardItem: IShopCard}) {

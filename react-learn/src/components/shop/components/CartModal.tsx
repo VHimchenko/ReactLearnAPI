@@ -26,10 +26,10 @@ const CartModal = forwardRef(
                     <h2>{title}</h2>
                     <Cart />
                     <form method="dialog" id="modal-actions">
-                        {actions}
+                        {actions()}
                     </form>
                 </dialog>,
-                document.getElementById('modal'));
+                document.getElementById('modal') as Element | null ?? document.body);
         });
 
 export default CartModal;
