@@ -18,17 +18,4 @@ export default function ShopRoot(){
             </div>
         </CartContextProvider>
     );
-
-    // return(
-    //     <CartContext.Provider value={ctxValue}>
-    //     <div id="shop">
-    //         <Header />
-    //         <div className="cards-container">
-    //             {productItems.map(item => {
-    //                 return <ShopCard key={item.title} cardItem={item} />;
-    //             })}
-    //         </div>
-    //     </div>
-    //     </CartContext.Provider>
-    // )
 }

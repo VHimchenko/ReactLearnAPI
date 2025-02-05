@@ -1,16 +1,7 @@
-import {createContext, useReducer, useState} from "react";
+import {useReducer, useState} from "react";
 import {ICartItem} from "../interfaces/interfaces.ts";
 import {DUMMY_PRODUCTS} from "../../../services/data.tsx";
-
-export const CartContext = createContext<{
-    items: ICartItem[];
-    addItemToCart: (item: ICartItem) => void;
-    updateCartQuantity: (item: ICartItem, quantity: number) => void;
-}>({
-    items: [],
-    addItemToCart: () => {},
-    updateCartQuantity: () => {}
-});
+import {CartContext} from "./CartContext.tsx";
 
 export interface IReducerAction<T> {
     type: string;
@@ -113,27 +104,6 @@ export default function CartContextProvider({children}: {children: any}) {
                 amount: amount
             }
         });
-        // setShoppingCart((prevShoppingCart)=>{
-        //     const updatedItems = [...prevShoppingCart.items];
-        //     const updatedItemIndex = updatedItem.findIndex(i => i.item.id === item.item.id);
-        //
-        //     const updatedItem = {
-        //         ...updatedItems[updatedItemIndex],
-        //     };
-        //
-        //     updatedItem.count += amount;
-        //
-        //     if(updatedItem.count < 1) {
-        //         updatedItems.splice(updatedItemIndex, 1);
-        //     } else {
-        //         updatedItems[updatedItemIndex] = updatedItem;
-        //     }
-        //
-        //     return {
-        //         ...prevShoppingCart,
-        //         items: updatedItems
-        //     }
-        // });
     }
 
     const ctxValue = {
