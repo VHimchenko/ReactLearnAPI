@@ -5,7 +5,7 @@ import {AVAILABLE_PLACES} from "./data/data.ts";
 import Modal from "./components/Modal.tsx";
 import Places from "./components/Places.tsx";
 import {IPlace} from "./interfaces/interfaces.ts";
-import logoImg from "assets/logo.png";
+import logoImg from "../src/assets/logo.png";
 
 function App() {
     const modal = useRef<HTMLDialogElement | null>(null);
