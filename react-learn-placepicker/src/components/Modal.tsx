@@ -8,7 +8,7 @@ interface InputRef {
 }
 
 
-const Modal = forwardRef<InputRef, PropsWithChildren<{}>>(
+const Modal = forwardRef<InputRef, PropsWithChildren>(
     function Modal(props: PropsWithChildren, ref: React.Ref<InputRef>) {
         const dialog = useRef<HTMLDialogElement>(null);
 
