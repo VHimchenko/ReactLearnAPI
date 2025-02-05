@@ -4,13 +4,20 @@ import './App.css'
 import {AVAILABLE_PLACES} from "./data/data.ts";
 import Modal from "./components/Modal.tsx";
 import Places from "./components/Places.tsx";
-import {IPlace} from "./interfaces/interfaces.ts";
+import {IGeolocationPosition, IPlace} from "./interfaces/interfaces.ts";
 import logoImg from "../src/assets/logo.png";
+import {sortPlacesByDistance} from "./data/geo.ts";
 
 function App() {
     const modal = useRef<HTMLDialogElement | null>(null);
     const selectedPlace = useRef<string>();
     const [pickedPlaces, setPickedPlaces] = useState<IPlace[]>([]);
+
+    navigator.geolocation.getCurrentPosition((position: IGeolocationPosition) => {
+        return sortPlacesByDistance(AVAILABLE_PLACES,
+            position.coords.latitude,
+            position.coords.longitude);
+    })
 
     function handleStartRemovePlace(id: string) {
         modal.current!.showModal();

@@ -10,3 +10,10 @@ export interface IPlace {
     lat: number;
     lon: number;
 }
+
+export interface IGeolocationPosition {
+    coords: {
+        latitude: number;
+        longitude: number;
+    };
+}
