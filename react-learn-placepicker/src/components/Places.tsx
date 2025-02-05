@@ -1,5 +1,7 @@
-export default function Places({title, places, fallbackText, onSelectPlace}
-                               :{title: string, places: any[], fallbackText: string, onSelectPlace: (id: string) => void} ) {
+import {IPlace} from "../interfaces/interfaces.ts";
+
+export default function Places({title, places, fallbackText = '', onSelectPlace}
+                               :{title: string, places: IPlace[], fallbackText: string, onSelectPlace: (id: string) => void} ) {
     return (
         <section className="places-category">
             <h2>{title}</h2>
@@ -9,7 +11,7 @@ export default function Places({title, places, fallbackText, onSelectPlace}
                     {places.map((place) => (
                         <li key={place.id} className="place-item">
                             <button onClick={() => {onSelectPlace(place.id)}}>
-                                <img src={place.image.src} alt={place.image.name} />
+                                <img src={place.image.src} alt={place.image.alt} />
                                 <h3>{place.title}</h3>
                             </button>
                         </li>
