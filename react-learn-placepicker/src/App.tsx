@@ -67,8 +67,8 @@ function App() {
                 />
                 <Places
                     title="Available Places"
+                    fallbackText={"No places available right now."}
                     places={AVAILABLE_PLACES}
-                    fallbackText=''
                     onSelectPlace={handleSelectPlace}
                 />
             </main>
