@@ -25,7 +25,7 @@ const Modal = forwardRef<InputRef, PropsWithChildren<{}>>(
             <dialog className="modal" ref={dialog}>
                 {props.children}
             </dialog>,
-            document.getElementById('modal') as HTMLElement
+            document.getElementById('modal') ?? document.body
         );
     });
 
