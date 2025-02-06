@@ -1,0 +1,137 @@
+/* Shop Container */
+div#shop  {
+    background: linear-gradient(to right, #603816, #8b4513); /* Adjust lightness for a slight change */
+    color: #fffddb; /* Light yellow for text */
+    padding: 1%;
+}
+
+#shop h1 {
+    display: flex; /* Create a flex container */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Distribute items: left and right */
+    height: 60px; /* Optional: Set header height */
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* Header Image (Round) */
+#shop h1 img {
+    height: 100%; /* Match the height of the header */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Keep image fitting inside the given space */
+    border-radius: 50%; /* Make the image round */
+    overflow: hidden;
+    margin-right: 10px; /* Add space between the image and the title */
+}
+
+/* Title (Flex Element in the Middle) */
+#shop h1 .title {
+    flex-grow: 1; /* Allow the title to take up remaining space between image and button */
+    font-size: 1.5rem;
+    color: #fffddb; /* Light yellow - matches text style */
+    text-align: left; /* Align text to the left */
+}
+
+/* Button (Aligned to the Right) */
+#shop h1 .cart-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: linear-gradient(to bottom, #fffddb, #ccad00); /* Light yellow to darker yellow */
+    color: #603816; /* Darkbrown text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#shop h1 .cart-button:hover {
+    background: linear-gradient(to bottom, #f7e491, #aa9500); /* Slightly darker on hover */
+}
+
+/* Major Button */
+#shop .button-major {
+    background: linear-gradient(to bottom, #fffddb, #ccad00); /* Light yellow to darker yellow */
+    color: #603816;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#shop .button-major:hover {
+    background: linear-gradient(to bottom, #f7e491, #aa9500); /* Slightly darker on hover */
+}
+
+/* Minor Button */
+#shop .button-minor {
+    background-color: #f4a460; /* Yellow-orange color */
+    color: #603816;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#shop .button-minor:hover {
+    background-color: #9C4800;
+}
+
+/* Cards Container */
+#shop .cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
+    gap: 20px;
+}
+
+/* Each Card */
+#shop .card {
+    text-align: left;
+    background-color: #9c4800;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow effect */
+    overflow: hidden;
+}
+
+/* Card Image */
+#shop .card img {
+    width: 100%; /* Full width image at the top */
+    height: 200px; /* Fixed height */
+    object-fit: cover;
+}
+
+/* Card Info Section */
+#shop .card-info {
+    padding: 10px;
+    color: #603816;
+}
+
+/* Card Title */
+#shop .card-title {
+    font-size: 1rem;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* Card Price */
+#shop .card-price {
+    font-size: 1.2rem;
+    color: #ccad00; /* Yellow-gold color for price */
+}
+
+/* Card Description */
+#shop .card-desc {
+    text-align: left;
+    font-size: 0.9rem;
+    color: #C1AF55;
+    margin: 10px 0;
+}
+
+/* Card 'Add to Cart' Button */
+#shop .card .button-minor {
+    float: right;
+    margin-top: 10px;
+}

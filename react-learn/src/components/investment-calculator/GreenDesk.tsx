@@ -7,7 +7,7 @@ export interface IGreenDesk extends PropsWithChildren {
     onChangeInput: (controlId: string, newValue: number) => void;
 }
 
-export default function GreenDesk(props: IGreenDesk ) {
+export default function GreenDesk(props: IGreenDesk) {
     return (
         <div className={ props.className }>
             <div className="green-desk-row">

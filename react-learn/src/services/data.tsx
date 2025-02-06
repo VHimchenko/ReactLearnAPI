@@ -56,3 +56,13 @@ const [data, setData] = useState('');`
 const [data, setData] = useState('');`
     },
 ]
+
+export const DUMMY_PRODUCTS = [
+    {id: 1, title:"Test 1", image: "", info: "test info", price: 453.1, description: "test description"},
+    {id: 2, title:"Test 2", image: "", info: "test info", price: 453.1, description: "test description"},
+    {id: 3, title:"Test 3", image: "", info: "test info", price: 453.1, description: "test description"},
+    {id: 4, title:"Test 4", image: "", info: "test info", price: 453.1, description: "test description"},
+    {id: 5, title:"Test 5", image: "", info: "test info", price: 453.1, description: "test description"},
+    {id: 6, title:"Test 6", image: "", info: "test info", price: 453.1, description: "test description"},
+    {id: 7, title:"Test 7", image: "", info: "test info", price: 453.1, description: "test description"}
+]
