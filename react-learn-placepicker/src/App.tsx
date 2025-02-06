@@ -8,18 +8,24 @@ import {IGeolocationPosition, IPlace} from "./interfaces/interfaces.ts";
 import logoImg from "../src/assets/logo.png";
 import {sortPlacesByDistance} from "./data/geo.ts";
 
+const storedIds = JSON.parse(localStorage.getItem('selectedPlaces') ?? '[]');
+const storedPlaces = storedIds.map((id: string) =>
+    AVAILABLE_PLACES.find((place) => place.id === id));
+
 function App() {
     const modal = useRef<HTMLDialogElement | null>(null);
     const selectedPlace = useRef<string>();
     const [availablePlaces, setAvailablePlaces ] = useState<IPlace[]>([]);
-    const [pickedPlaces, setPickedPlaces] = useState<IPlace[]>([]);
+    const [pickedPlaces, setPickedPlaces] = useState<IPlace[]>(storedPlaces);
 
     useEffect(()=>{
         navigator.geolocation.getCurrentPosition((position: IGeolocationPosition) => {
-            setAvailablePlaces(sortPlacesByDistance(AVAILABLE_PLACES,
+            const sortedPlaces = sortPlacesByDistance(AVAILABLE_PLACES,
                 position.coords.latitude,
-                position.coords.longitude))
-        })
+                position.coords.longitude);
+
+            setAvailablePlaces(sortedPlaces);
+        });
     }, []);
 
     function handleStartRemovePlace(id: string) {
@@ -54,6 +60,10 @@ function App() {
             prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
         );
         modal.current!.close();
+
+        const storedIds = JSON.parse(localStorage.getItem('selectedPlaces') ?? '[]');
+        localStorage.setItem('selectedPlaces',
+            JSON.stringify(storedIds.filter((id: string) => id !== selectedPlace.current)));
     }
 
     return (
