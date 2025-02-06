@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import DeleteConfirmation from "./components/DeleteConfirmation.tsx";
 import './App.css'
 import {AVAILABLE_PLACES} from "./data/data.ts";
@@ -11,13 +11,16 @@ import {sortPlacesByDistance} from "./data/geo.ts";
 function App() {
     const modal = useRef<HTMLDialogElement | null>(null);
     const selectedPlace = useRef<string>();
+    const [availablePlaces, setAvailablePlaces ] = useState<IPlace[]>([]);
     const [pickedPlaces, setPickedPlaces] = useState<IPlace[]>([]);
 
-    navigator.geolocation.getCurrentPosition((position: IGeolocationPosition) => {
-        return sortPlacesByDistance(AVAILABLE_PLACES,
-            position.coords.latitude,
-            position.coords.longitude);
-    })
+    useEffect(()=>{
+        navigator.geolocation.getCurrentPosition((position: IGeolocationPosition) => {
+            setAvailablePlaces(sortPlacesByDistance(AVAILABLE_PLACES,
+                position.coords.latitude,
+                position.coords.longitude))
+        })
+    }, []);
 
     function handleStartRemovePlace(id: string) {
         modal.current!.showModal();
@@ -39,6 +42,11 @@ function App() {
                 return prevPickedPlaces;
             return [place, ...prevPickedPlaces];
         });
+
+        const storedIds = JSON.parse(localStorage.getItem('selectedPlaces') ?? '[]');
+        if (storedIds.indexOf(id) === -1) {
+            localStorage.setItem('selectedPlaces', JSON.stringify([id, ...storedIds]));
+        }
     }
 
     function handleRemovePlace() {
@@ -74,8 +82,9 @@ function App() {
                 />
                 <Places
                     title="Available Places"
-                    fallbackText={"No places available right now."}
-                    places={AVAILABLE_PLACES}
+                    fallbackText="Sorting places by distance from current."
+                    //places={AVAILABLE_PLACES}
+                    places={availablePlaces}
                     onSelectPlace={handleSelectPlace}
                 />
             </main>
